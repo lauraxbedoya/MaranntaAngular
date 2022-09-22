@@ -1,0 +1,35 @@
+.container_layout {
+  height: 34px;
+  background-color: lightgrey;
+  width: auto;
+  display: flex;
+  align-items: center;
+  color: #757575;
+  flex-direction: row;
+}
+
+.contact_company {
+  display: flex;
+  flex-direction: row;
+  flex: 2;
+  justify-content: flex-end;
+  margin-right: 5%;
+  font-size: 14px;
+}
+
+.divv1 {
+  margin: auto 25px;
+}
+
+.know_us_company {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: flex-start;
+  margin-left: 5%;
+  font-size: 14px;
+}
+
+.divv2 {
+  margin: auto 25px;
+}

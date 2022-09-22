@@ -1,0 +1,28 @@
+<div>
+  <div class="search_bar">
+    <div class="home_and_inventory">
+      <a routerLink="/" class="nameCompany_home" routerLinkActive="active">{{routeHome}}</a>
+      <a routerLink="/inventory" class="route_inventory" routerLinkActive="active">{{routeInventory}}</a>
+    </div>
+    <div class="search">
+      <!-- icono -->
+      <input
+        type="search"
+        class="input_search"
+        placeholder="Buscar por referencia o categoría"/>
+    </div>
+    <div class="buttons_login">
+      <button (click)="handleLogOut()">{{signOut}}</button>
+      <nav>
+        <a routerLink="/user/login" routerLinkActive="active" class="user_login">{{routeLogin}}</a>
+        <a routerLink="/user/registration" routerLinkActive="active" class="user_login">{{routeSignUp}}</a>        
+        <label>{{(user$ | async)?.name}}</label>
+      </nav>
+    </div>
+    <!-- iconcart -->
+  </div>
+
+  <div class="bar_category">
+    <a routerLink="{{cat.route}}" routerLinkActive="active" *ngFor="let cat of categories">{{cat.cat}}</a>
+  </div>
+</div>

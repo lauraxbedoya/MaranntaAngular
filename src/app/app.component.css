@@ -1,0 +1,9 @@
+.root_contact {
+  display: flex;
+  flex-direction: row;
+  background-color: lightgrey;
+  align-items: center;
+  width: auto;
+  height: 34px;
+  color: #757575;
+}
