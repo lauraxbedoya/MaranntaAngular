@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="search-hero">
+      <input type="search" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Referencia">
+      <span>Total de prendas: {{totalProducts}}</span>
+    </div>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <th>Estilo</th>
+    <th>Referencia</th>
+    <th>Color</th>
+    <th>Talla</th>
+    <th>Talla de Busto</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+  </thead>
+
+  <tr *ngFor="let ref of values | filter:searchText">
+    <td>{{ref.style}}</td>
+    <td>{{ref.reference}}</td>
+    <td>{{ref.color}}</td>
+    <td>{{ref.size}}</td>
+    <td>{{ref.breastsize}}</td>
+    <td>{{ref.quantity}}
+      <button (click)="handleSum(ref.id)">+</button>
+      <button (click)="handleSubtraction(ref.id)">-</button>
+    </td>
+    <td>{{ref.price}}</td>
+  </tr>
+  <button mat-button (click)="openDialog()">Agregar nueva prenda</button>
+  <button (click)="updateQuantityForm()">Guardar cambios</button>
+</table>
+

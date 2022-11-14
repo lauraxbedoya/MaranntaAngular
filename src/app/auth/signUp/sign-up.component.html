@@ -53,8 +53,8 @@
       <label>Fecha de nacimiento</label>
       <span class="text-danger ms-1">*</span>
       <input
-        name="dateOfBirth"
-        ngModel value={{user.dateOfBirth}}
+        name="dateofbirth"
+        ngModel value={{user.dateofbirth}}
         onChange={handleInputChange}
         type="date"
       />
@@ -68,14 +68,6 @@
       </div>
 
       <div>
-        <div class="mt-4">
-          <input
-            type="checkbox"
-            ngModel="isCheckedOffers"
-            *ngIf="!isCheckedOffers"
-          />
-          <label class="ms-2">Deseo recibir ofertas por email.</label>
-        </div>
         <div class="mt-2">
           <input
             type="checkbox"

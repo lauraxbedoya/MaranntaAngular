@@ -1,0 +1,18 @@
+<div *ngFor="let card of cards" style="display: flex; flex-direction: column; width: 25%; height: 20%;">
+  <img [src]="card.img" class="images" (mouseenter)="onMouseEnter(card.id)" (mouseleave)="onMouseOut()"/>
+  <span>{{card.reference}}</span>
+  <span>{{card.price}}</span>
+  <!-- <img src="images.length ? images[0] : logoPrueba.png" /> -->
+
+  <div class="container-button-hover" *ngIf="imageHoverId === card.id">
+    <button class="buttonAddBag" (click)="addToBag(card.id)">AGREGAR AL CARRITO</button>
+  </div>
+</div>
+
+
+
+
+<!-- *ngIf="imageHoverId === card.id" -->
+
+
+<!-- <img *ngFor="let i of img" [src]="i" style="height: 20%; width: 15%;"/> -->

@@ -6,7 +6,7 @@ import storage, { AUTH_TOKEN } from 'src/utils/storage';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
 
@@ -23,8 +23,7 @@ export class AppComponent implements OnInit {
         this.router.navigate(['/']);
       })
     } else {
-      this.router.navigate(['/user/login' && '/admin/login'])
+      this.router.navigate(['/user/login'])
     }
   }
-  title = 'maranntaPage';
 }

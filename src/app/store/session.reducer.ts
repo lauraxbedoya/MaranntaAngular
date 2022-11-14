@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { ActionType, AdminType, UserType } from "src/utils/types";
+import { UserType } from "src/utils/types";
 import { storeUser } from "./session.actions";
 
 export const initialState: SessionStateType = {
@@ -21,7 +21,7 @@ const sessionReducer = createReducer(initialState,
 // }
 
 export type SessionStateType = {
-  userInfo: ( UserType | AdminType ) | null,
+  userInfo: ( UserType ) | null,
 }
 
 export default sessionReducer;

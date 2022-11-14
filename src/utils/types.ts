@@ -8,16 +8,36 @@ export type UserType = {
   lastname: string;
   email: string;
   password: string;
-  dateOfBirth: string;
+  dateofbirth?: string | null;
   gender: string;
-  offers: boolean;
   politics: boolean;
+  role: string
 };
 
-export type AdminType = {
-  name: string,
-  lastname: string,
-  email: string,
-  password: string,
-  isAdmin: boolean
-};
+export type LoginUser = {
+  email: string;
+  password: string;
+}
+
+export type CardType = {
+  image: string;
+  reference: string;
+  price: number
+}
+
+export type StockType = {
+  id?: string;
+  style: string;
+  reference: string;
+  color: string;
+  size: string;
+  breastsize: string;
+  quantity: number;
+  price: string;
+  images: any[];
+}
+
+export type ResultType = {
+  data: any;
+  message: string;
+}

@@ -37,9 +37,7 @@ export class UserService {
   };
 
   async create( user: UserType ) {
-    return this.http.post<UserType>(`${this.baseUrl}/`, {
-      user
-    }, {
+    return this.http.post<UserType>(`${this.baseUrl}`, user, {
       headers: this.headers
     })
   };

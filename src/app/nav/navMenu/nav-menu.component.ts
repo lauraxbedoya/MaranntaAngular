@@ -1,17 +1,15 @@
-import { Component, NgModule, OnInit } from "@angular/core";
+import { Component, Inject, NgModule, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState, selectSessionUserInfo } from "src/app/store";
 import { storeUser } from "src/app/store/session.actions";
-import { AdminService } from "src/services/admin.service";
 import { UserService } from "src/services/user.service";
 import storage, { AUTH_TOKEN } from "src/utils/storage";
-import { AdminType, UserType } from "src/utils/types";
-
+import { UserType } from "src/utils/types";
 
 type CategoryTypes = {
-  cat: string,
+  category: string,
   route: string
 }
 
@@ -22,31 +20,30 @@ type CategoryTypes = {
 })
 
 export class NavMenu implements OnInit {
-  
-  routeHome: string = 'MARANNTA';
-  routeLogin: string = 'Entrar';
-  routeSignUp: string = 'Registrarse';
-  routeInventory: string = 'Inventario';
-  signOut: string = 'Cerrar Sesion';
-  user$: Observable<UserType | AdminType | null> = this.store.select(selectSessionUserInfo);
-
+  user$: Observable<UserType | null> = this.store.select(selectSessionUserInfo);
   categories: CategoryTypes[] = [
-    {cat: 'Bodies en Encaje', route: '/bodies_encaje'},
-    {cat: 'Otros Bodies', route: '/bodies'},
-    {cat: 'Crop Tops ', route: '/crop_tops'},
-    {cat: 'Piel de Durazno', route: '/piel_durazno'},
-  ]
+    {category: 'Bodies en Encaje', route: '/bodies_encaje'},
+    {category: 'Otros Bodies', route: '/bodies'},
+    {category: 'Crop Tops ', route: '/crop_tops'},
+    {category: 'Piel de Durazno', route: '/piel_durazno'},
+    {category: 'Vestidos de Baño', route: '/vestidos_baño'},
+  ];
   
   constructor(
     private _userService: UserService,
     private router: Router,
-    private store: Store<AppState>
+    private store: Store<AppState>,
   ) {}
 
   async ngOnInit() {
-    (await this._userService.getUser()).subscribe((data: { user: UserType }) => {
-      this.store.dispatch(storeUser(data.user));
-    });
+    const token = storage.get(AUTH_TOKEN);
+    if(token) {
+      (await this._userService.getUser()).subscribe((data: { user: UserType }) => {
+        this.store.dispatch(storeUser(data.user));
+      })
+    } else {
+      this.router.navigate(['/user/registration'])
+    }
   }
 
   onSearch(event: string) {}
@@ -54,6 +51,8 @@ export class NavMenu implements OnInit {
   handleLogOut() {
     storage.remove(AUTH_TOKEN);
     this.store.dispatch(storeUser(null));
-    this.router.navigate(['/']);
+    this.router.navigate(['user/login']);
   }
+
+  handleCategories() {}
 }

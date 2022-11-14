@@ -1,5 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
+import { AppState } from "src/app/store";
+import { storeUser } from "src/app/store/session.actions";
 import { UserService } from "src/services/user.service";
 import { UserType } from "src/utils/types";
 
@@ -19,25 +22,33 @@ export class SignUp {
     lastname: "uribe",
     email: "dani.uribe@gmail.com",
     password: "daniel",
-    dateOfBirth: "",
+    dateofbirth: null,
     gender: "Masculino",
-    offers: true,
     politics: true,
+    role: "user"
   }
 
   constructor(
     private router: Router,
     private _userService: UserService,
+    private store: Store<AppState>
   ) {}
 
-  async handleSignUp() {
-    if(!this.user.name || !this.user.lastname || !this.user.email || !this.user.password || !this.user.gender || !this.user.offers || !this.user.politics) {
-      alert('Todos los campos son requeridos')
-    } else {
-      (await this._userService.create(this.user)).subscribe((data: UserType) => {
-        console.log(data)
-        this.router.navigate(['/']);
-      })
+  validationForm(): boolean {
+    if(!this.user.name || !this.user.lastname || !this.user.email || !this.user.password) {
+      alert('Ciertos campos son requeridos')
+      return false
     }
+    return true
+  }
+
+  async handleSignUp() {
+    if(!this.validationForm()) return;
+
+    (await this._userService.create(this.user)).subscribe((data: UserType) => {
+      console.log(data)
+      alert('Cuenta creada corretamente')
+      this.store.dispatch(storeUser({ ...data }));
+    })
   }
 }

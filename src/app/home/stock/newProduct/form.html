@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Agregar Nueva Prenda</h2>
+<mat-dialog-content class="mat-typography">
+  <div>
+    <input
+      type=""
+      placeholder="Estilo de la prenda"
+      value={{product.style}}
+      />
+    <input
+      type=""
+      placeholder="Nombre o Referencia"
+      value={{product.reference}}
+      />
+    <input
+      type=""
+      placeholder="Color"
+      value={{product.color}}
+      />
+    <input
+      type=""
+      placeholder="Talla"
+      value={{product.size}}
+      />
+    <input
+      type=""
+      placeholder="Talla máxima de busto permitida"
+      value={{product.breastsize}}
+      />
+    <input
+      type=""
+      placeholder="Cantidad"
+      value={{product.quantity}}
+      />
+    <input
+      type=""
+      placeholder="Precio"
+      value={{product.price}}
+      />
+    <input
+      type="file"
+      name="images"
+      placeholder="imagen"
+      (change)="onFilesChange($event)"
+      multiple
+      />
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" (click)="saveNewProduct()" cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>
