@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container_child {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    padding: 30px;
+}
+
+.terms_and_conditions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.accept_terms_and_conditions {
+    display: flex;
+    align-self: center;
+}

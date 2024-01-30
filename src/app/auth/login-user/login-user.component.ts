@@ -13,7 +13,6 @@ import storage, { AUTH_TOKEN } from "src/utils/storage";
 })
 
 export class LoginUser {
-  user: string = '';
   email: string = 'laura@gmail.com';
   password: string = 'laura';
   messageError: string = "Todos los campos son requeridos";
@@ -23,10 +22,10 @@ export class LoginUser {
     private _userService: UserService,
     private router: Router,
     private store: Store<AppState>
-  ) {}
+  ) { }
 
   validateForm(): boolean {
-    if(!this.email || !this.password) {
+    if (!this.email || !this.password) {
       alert(this.messageError)
       return false
     }
@@ -37,10 +36,10 @@ export class LoginUser {
     if (!this.validateForm()) return;
 
     (await this._userService.login(this.email, this.password))
-      .subscribe((data: {accessToken: string, user: any}) => {
+      .subscribe((data: { accessToken: string, user: any }) => {
         this.store.dispatch(storeUser({ ...data.user }));
         storage.save(AUTH_TOKEN, data.accessToken);
         this.router.navigate(['/']);
-    })
+      })
   }
 }

@@ -8,34 +8,29 @@ import { UserType } from "src/utils/types";
 
 @Component({
   selector: 'sign-up',
-  templateUrl: './sign-up.component.html'
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.styles.css']
 })
 
 export class SignUp {
-  genderList: string[] = ["Seleccionar...","Masculino", "Femenino"];
-
-  isCheckedOffers: boolean = false;
-  isCheckedPolitics: boolean = false;
-
   user: UserType = {
     name: "daniel",
     lastname: "uribe",
     email: "dani.uribe@gmail.com",
     password: "daniel",
-    dateofbirth: null,
-    gender: "Masculino",
+    birthDate: null,
+    phone: "3215900435",
     politics: true,
-    role: "user"
-  }
+  };
 
   constructor(
     private router: Router,
     private _userService: UserService,
-    private store: Store<AppState>
-  ) {}
+    private store: Store<AppState>,
+  ) { }
 
   validationForm(): boolean {
-    if(!this.user.name || !this.user.lastname || !this.user.email || !this.user.password) {
+    if (!this.user.name || !this.user.lastname || !this.user.email || !this.user.password || this.user.politics === false) {
       alert('Ciertos campos son requeridos')
       return false
     }
@@ -43,12 +38,12 @@ export class SignUp {
   }
 
   async handleSignUp() {
-    if(!this.validationForm()) return;
+    if (!this.validationForm()) return;
 
     (await this._userService.create(this.user)).subscribe((data: UserType) => {
-      console.log(data)
-      alert('Cuenta creada corretamente')
+      alert('Cuenta creada corretamente');
       this.store.dispatch(storeUser({ ...data }));
+      this.router.navigate(['/']);
     })
   }
 }

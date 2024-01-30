@@ -1,6 +1,7 @@
 <div *ngFor="let card of cards" style="display: flex; flex-direction: column; width: 25%; height: 20%;">
-  <img [src]="card.img" class="images" (mouseenter)="onMouseEnter(card.id)" (mouseleave)="onMouseOut()"/>
-  <span>{{card.reference}}</span>
+  <img [src]="card.img" class="images" (mouseenter)="onMouseEnter(card.id)" (mouseleave)="onMouseOut()" />
+  <span>Referencia: {{card.nameReference}}</span>
+  <span class="marannta">{{card.reference}}</span>
   <span>{{card.price}}</span>
   <!-- <img src="images.length ? images[0] : logoPrueba.png" /> -->
 

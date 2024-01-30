@@ -8,10 +8,10 @@ export type UserType = {
   lastname: string;
   email: string;
   password: string;
-  dateofbirth?: string | null;
-  gender: string;
-  politics: boolean;
-  role: string
+  birthDate?: string | null;
+  phone?: string | null,
+  politics?: boolean;
+  role?: string
 };
 
 export type LoginUser = {

@@ -1,4 +1,28 @@
-.container_loginUser {
+.container {
   display: flex;
   justify-content: center;
+}
+
+.container_child {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  padding: 30px;
+}
+
+.no_close_session_and_forgot_password {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  margin: 5px 0;
+  width: 100%;
 }

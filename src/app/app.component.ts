@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserLogin } from 'src/assets/interfaces/user.modelo';
 import { UserService } from 'src/services/user.service';
 import storage, { AUTH_TOKEN } from 'src/utils/storage';
 
@@ -13,17 +14,18 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private _userService: UserService,
-  ) {}
+  ) { }
 
   async ngOnInit() {
     const token = storage.get(AUTH_TOKEN);
-    if(token) {
+    if (token) {
       (await this._userService.getUser())
-      .subscribe((data: { user: any }) => {
-        this.router.navigate(['/']);
-      })
-    } else {
-      this.router.navigate(['/user/login'])
+        .subscribe((data: { user: UserLogin }) => {
+          this.router.navigate(['/']);
+        })
     }
+    // else {
+    //   this.router.navigate(['/user/login'])
+    // }
   }
 }

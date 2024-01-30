@@ -1,14 +1,12 @@
- <div> 
+<div>
   <div class="search_bar">
     <div class="home_and_inventory">
       <a routerLink="/" class="nameCompany_home" routerLinkActive="active">Marannta</a>
       <span *ngIf="(user$ | async)?.name">Bienvenid@ {{(user$ | async)?.name}}</span>
     </div>
     <div class="search">
-      <input
-        type="search"
-        class="input_search"
-        placeholder="Buscar por referencia o categoría"/>
+      <span class="pi pi-search icon_search"></span>
+      <input type="search" class="input_search" placeholder="Buscar por referencia o categoría" />
     </div>
     <div>
     </div>
@@ -19,7 +17,8 @@
       <ng-template #elseBlock>
         <nav style="display: flex; flex-direction: row;">
           <button role="button" routerLink="/user/login" routerLinkActive="active" class="button-60">Entrar</button>
-          <button role="button" routerLink="/user/registration" routerLinkActive="active" class="button-60" style="margin-left: 3px;">Registrarse</button>
+          <button role="button" routerLink="/user/registration" routerLinkActive="active" class="button-60"
+            style="margin-left: 3px;">Registrarse</button>
         </nav>
       </ng-template>
     </div>
@@ -31,7 +30,8 @@
 
   <div class="container_barCategory">
     <div class="bar_category" *ngFor="let cat of categories">
-      <a routerLink={{cat.route}} routerLinkActive="active" class="main_button"><span class="text">{{cat.category}}</span></a>
+      <a routerLink={{cat.route}} routerLinkActive="active" class="main_button"><span
+          class="text">{{cat.category}}</span></a>
     </div>
   </div>
 </div>

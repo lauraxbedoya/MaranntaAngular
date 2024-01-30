@@ -12,25 +12,29 @@ export class CardComponent implements OnInit {
     {
       id: 0,
       img: 'https://res.cloudinary.com/dream-solutions/image/upload/v1666758574/Marannta/uaize18olnrqhqw7mxyb.jpg',
-      reference: 'París',
+      nameReference: 'París',
+      reference: "Marannta",
       price: 45000
     },
     {
       id: 1,
       img: 'https://res.cloudinary.com/dream-solutions/image/upload/v1666758459/Marannta/bvtztotxydojpzv3prvv.jpg',
-      reference: 'Tokio',
+      nameReference: 'Tokio',
+      reference: "Marannta",
       price: 44000
     },
     {
       id: 2,
       img: 'https://res.cloudinary.com/dream-solutions/image/upload/v1666758575/Marannta/nkf8wcrgp3ibfu4bpjmk.jpg',
-      reference: 'Amapola',
+      nameReference: 'Amapola',
+      reference: "Marannta",
       price: 56000
     },
     {
       id: 3,
       img: 'https://res.cloudinary.com/dream-solutions/image/upload/v1666758574/Marannta/dctvbhhwr0ytac2pqlxm.jpg',
-      reference: 'Samantha',
+      nameReference: 'Samantha',
+      reference: "Marannta",
       price: 50000
     },
   ]
@@ -72,5 +76,5 @@ export class CardComponent implements OnInit {
     this.imageHoverId = null;
   }
 
-  addToBag(id: number) {}
+  addToBag(id: number) { }
 }

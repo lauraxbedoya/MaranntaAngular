@@ -22,31 +22,33 @@ type CategoryTypes = {
 export class NavMenu implements OnInit {
   user$: Observable<UserType | null> = this.store.select(selectSessionUserInfo);
   categories: CategoryTypes[] = [
-    {category: 'Bodies en Encaje', route: '/bodies_encaje'},
-    {category: 'Otros Bodies', route: '/bodies'},
-    {category: 'Crop Tops ', route: '/crop_tops'},
-    {category: 'Piel de Durazno', route: '/piel_durazno'},
-    {category: 'Vestidos de Baño', route: '/vestidos_baño'},
+    { category: 'Bodies en Encaje', route: '/bodies_encaje' },
+    { category: 'Otros Bodies', route: '/bodies' },
+    { category: 'Crop Tops ', route: '/crop_tops' },
+    { category: 'Piel de Durazno', route: '/piel_durazno' },
+    { category: 'Accesorios', route: '/accesorios' },
+    { category: 'Descuentos', route: '/descuentos' },
   ];
-  
+
   constructor(
     private _userService: UserService,
     private router: Router,
     private store: Store<AppState>,
-  ) {}
+  ) { }
 
   async ngOnInit() {
     const token = storage.get(AUTH_TOKEN);
-    if(token) {
+    if (token) {
       (await this._userService.getUser()).subscribe((data: { user: UserType }) => {
         this.store.dispatch(storeUser(data.user));
       })
     } else {
-      this.router.navigate(['/user/registration'])
+      // this.router.navigate(['/user/registration']);
+      this.router.navigate([this.router])
     }
   }
 
-  onSearch(event: string) {}
+  onSearch(event: string) { }
 
   handleLogOut() {
     storage.remove(AUTH_TOKEN);
@@ -54,5 +56,5 @@ export class NavMenu implements OnInit {
     this.router.navigate(['user/login']);
   }
 
-  handleCategories() {}
+  handleCategories() { }
 }

@@ -1,86 +1,30 @@
-<div class="contenedor_signUpForm">
-  <div class="container-child">
-    <div class="texto_nuevosclientes">
-      <h5 class="text-center">NUEVOS CLIENTES</h5>
-    </div>
-  </div>
-  <h6 class="text_bienvenida">Bienvenidos a Marannta. Registrate y sé parte de nuestro Team Marannta.</h6>
-  <div class="text_campo_obligatorio">
-    <span class="text-danger me-1">*</span>
-    <label>Campos obligatorios</label>
-  </div>
+<div class="container">
+  <div class="container_child">
 
-  <div>
-    <div class="mt-3">
-      <label>Nombre</label>
-      <span class="text-danger ms-1">*</span>
-      <input
-        name="name" 
-        ngModel value={{user.name}}
-        onChange={handleInputChange}
-      />
+    <div class="container_signup_text">
+      <h4 class="text-center">NUEVOS CLIENTES</h4>
     </div>
-    <div class="mt-2">
-      <label>Apellidos</label>
-      <span class="text-danger ms-1">*</span>
-      <input
-        name="surname"
-        ngModel value={{user.lastname}}
-        onChange={handleInputChange}
-      />
-    </div>
-    <div class="mt-2">
-      <label>Correo electrónico</label>
-      <span class="text-danger ms-1">*</span>
-      <input
-          name="email"
-          ngModel value={{user.email}}
-          onChange={handleInputChange}
-          type="email"
-      />
-    </div>
-    <div class="mt-2">
-      <label>Contraseña</label>
-      <span class="text-danger ms-1">*</span>
-      <input
-        name="password"
-        ngModel value={{user.password}}
-        onChange={handleInputChange}
-        type="password"
-      />
-    </div>
-    <div class="mt-2">
-      <label>Fecha de nacimiento</label>
-      <span class="text-danger ms-1">*</span>
-      <input
-        name="dateofbirth"
-        ngModel value={{user.dateofbirth}}
-        onChange={handleInputChange}
-        type="date"
-      />
-    </div>
-    <div class="mt-2">
-      <label>Sexo</label>
-      <span class="text-danger ms-1">*</span>
-        <select name="user.gender">
-          <option [value]="list" *ngFor="let list of genderList">{{list}}</option>
-        </select>
-      </div>
 
-      <div>
-        <div class="mt-2">
-          <input
-            type="checkbox"
-            ngModel="isCheckedPolitics"
-            *ngIf="!isCheckedPolitics"
-          />
-          <label class="ms-2">Acepto política y tratamiento de mis datos.</label>
-        </div>
+    <h5 class="text_bienvenida">Bienvenidos a Marannta. Registrate y sé parte de nuestro Team Marannta.</h5>
+
+    <input-session-component title="Nombre" value={{user.name}} type="name"></input-session-component>
+    <input-session-component title="Apellido" value={{user.lastname}} type="name"></input-session-component>
+    <input-session-component title="Email" value={{user.email}} type="email"></input-session-component>
+    <input-session-component title="Contraseña" value={{user.password}} type="password"></input-session-component>
+    <input-session-component title="Número de Contacto" value={{user.phone}} type="number"></input-session-component>
+    <input-session-component title="Fecha de nacimiento" value={{user.birthDate}} type="date"></input-session-component>
+
+    <!-- <select name="user.gender">
+      <option [value]="list" *ngFor="let list of genderList">{{list}}</option>
+    </select> -->
+
+    <div class="terms_and_conditions">
+      <div class="accept_terms_and_conditions">
+        <input type="checkbox" ngModel="politics" />
+        <label>Acepto política y tratamiento de mis datos.</label>
       </div>
-      <button
-        class="mt-3"
-        (click)="handleSignUp()"
-      >Enviar</button>
-      <a routerLink="/" class="button_cancelar mt-3">Cancelar</a>
+    </div>
+    <button (click)="handleSignUp()">Enviar</button>
+    <a routerLink="/" class="button_cancelar">Cancelar</a>
   </div>
 </div>

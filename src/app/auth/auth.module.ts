@@ -4,11 +4,13 @@ import { UserService } from 'src/services/user.service';
 import { SignUp } from './signUp/sign-up.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { LoginUser } from './login-user/login-user.component';
+import { InputSessionComponent } from '../components/input-session/input-session-component';
 
 @NgModule({
   declarations: [
     SignUp,
-    LoginUser
+    LoginUser,
+    InputSessionComponent
   ],
   providers: [
     UserService

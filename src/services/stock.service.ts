@@ -12,12 +12,12 @@ const API_URL = 'http://localhost:3010/';
 export class StockService {
   constructor(
     private http: HttpClient
-  ) {}
+  ) { }
 
   baseUrl = `${API_URL}stock`;
 
   headers: HttpHeaders = new HttpHeaders()
-    .set('authorization', `Bearer ${storage.get(AUTH_TOKEN)}`)
+    // .set('authorization', `Bearer ${storage.get(AUTH_TOKEN)}`)
     .set('content-type', 'application/json')
 
   async getStock() {
@@ -26,7 +26,7 @@ export class StockService {
     });
   }
 
-  async create( product: StockType ) {
+  async create(product: StockType) {
     return this.http.post<ResultType>(`${this.baseUrl}`, product, {
       headers: this.headers
     })
@@ -38,7 +38,7 @@ export class StockService {
     })
   }
 
-  async deleteProduct( id: StockType ) {
+  async deleteProduct(id: StockType) {
     return this.http.delete<StockType[]>(`${this.baseUrl}/${id}`, {
       headers: this.headers
     })
